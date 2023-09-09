@@ -1,8 +1,8 @@
 .data
 inputs: 
 	.space 20	# name
-	.space 2	# age
-	.space 20	# address
+	.space 4	# age
+	.space 25	# address
 	.space 10	# city
 	.space 2	# state
 	
@@ -34,13 +34,37 @@ main:
 	la 	$a0, inputs
         li	$a1, 20
         syscall
+	
+	# prompt for age
+ 	la	$t0, prompts + 18
+	li	$v0, 4
+	move	$a0, $t0
+	syscall  
+	
+	# read string input
+	li 	$v0, 8		
+	la 	$a0, inputs + 20
+        li	$a1, 4
+        syscall
+
+	# prompt for address
+	la	$t0, prompts + 35
+	li	$v0, 4
+	move	$a0, $t0
+	syscall  
+	
+	# read string input
+	li 	$v0, 8		
+	la 	$a0, inputs + 40
+        li	$a1, 25
+        syscall
         
-	# new line
+        # new line
 	li 	$v0, 11		
 	li 	$a0, 0xA
 	syscall
-  
-        # print outputLabel
+	
+        # print name outputLabel
         li 	$v0, 4          
     	la 	$a0, outputLabel
     	syscall  
@@ -50,6 +74,28 @@ main:
 	li	$v0, 4
 	move	$a0, $t0
 	syscall
+	
+        # print age outputLabel
+        li 	$v0, 4          
+    	la 	$a0, outputLabel + 7
+    	syscall  
+    	
+    	# print saved age input
+	la	$t0, inputs + 20
+	li	$v0, 4
+	move	$a0, $t0
+	syscall
+	
+        # print address outputLabel
+        li 	$v0, 4          
+    	la 	$a0, outputLabel + 13
+    	syscall  
+    	
+    	# print saved address
+	la	$t0, inputs + 40
+	li	$v0, 4
+	move	$a0, $t0
+	syscall    	
 
 	# new line
 	li 	$v0, 11		
