@@ -1,7 +1,7 @@
 .data
 inputs: 
 	.space 20	# name
-	.space 4	# age
+	.word 0		# age
 	.space 25	# address
 	.space 10	# city
 	.space 2	# state
