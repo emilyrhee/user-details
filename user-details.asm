@@ -4,7 +4,7 @@ inputs:
 	.word 0		# age
 	.space 25	# address
 	.space 10	# city
-	.space 2	# state
+	.space 3	# state
 	
 prompts:
 	.asciiz "Enter your name: "
