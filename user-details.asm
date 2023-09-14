@@ -57,10 +57,21 @@ main:
 	
 	# read address input
 	li 	$v0, 8		
-	la 	$a0, inputs + 40
+	la 	$a0, inputs + 24
         li	$a1, 25
         syscall
         
+        # prompt for city
+	la	$a0, prompts + 56
+	li	$v0, 4
+	syscall
+	
+	# read city input
+	li 	$v0, 8		
+	la 	$a0, inputs + 49
+        li	$a1, 10
+        syscall
+	
         # new line
 	li 	$v0, 11		
 	li 	$a0, 0xA
@@ -97,9 +108,19 @@ main:
     	syscall  
     	
     	# print saved address
-	la	$a0, inputs + 40
+	la	$a0, inputs + 24
 	li	$v0, 4
 	syscall    	
+	
+	# print city outputLabel
+        li 	$v0, 4          
+    	la 	$a0, outputLabel + 23
+    	syscall 
+    	
+    	# print saved city
+	la	$a0, inputs + 49
+	li	$v0, 4
+	syscall	
 
 	# new line
 	li 	$v0, 11		
