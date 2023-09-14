@@ -41,12 +41,11 @@ main:
 	move	$a0, $t0
 	syscall  
 	
-	# read string input
-	li 	$v0, 8		
-	la 	$a0, inputs + 20
-        li	$a1, 4
+	# read age input
+	li 	$v0, 5
         syscall
-
+        sw	$v0, inputs + 20
+        
 	# prompt for address
 	la	$t0, prompts + 35
 	li	$v0, 4
@@ -81,9 +80,14 @@ main:
     	syscall  
     	
     	# print saved age input
-	la	$t0, inputs + 20
-	li	$v0, 4
+	lw	$t0, inputs + 20
+	li	$v0, 1
 	move	$a0, $t0
+	syscall
+	
+	# new line
+	li 	$v0, 11		
+	li 	$a0, 0xA
 	syscall
 	
         # print address outputLabel
