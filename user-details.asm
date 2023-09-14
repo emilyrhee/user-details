@@ -4,7 +4,9 @@ inputs:
 	.word 0		# age
 	.space 25	# address
 	.space 10	# city
-	.space 3	# state
+	.space 3	# state code
+	.space 10	# zip
+	.space 16	# phone number
 	
 prompts:
 	.asciiz "Enter your name: "
@@ -12,6 +14,8 @@ prompts:
 	.asciiz "Enter your address: "
 	.asciiz "Enter your city: "
 	.asciiz "Enter your state code: "
+	.asciiz "Enter your zip code: "
+	.asciiz "Enter your phone number: "
 	
 outputLabel:
 	.asciiz "Name: "
@@ -19,6 +23,8 @@ outputLabel:
 	.asciiz "Address: "
 	.asciiz "City: "
 	.asciiz "State: "
+	.asciiz "Zip code: "
+	.asciiz "Phone number: "
 
 .text
 .globl main
