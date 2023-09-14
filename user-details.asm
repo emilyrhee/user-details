@@ -24,9 +24,8 @@ outputLabel:
 .globl main
 main:
 	# prompt for name
-	la	$t0, prompts
+	la	$a0, prompts
 	li	$v0, 4
-	move	$a0, $t0
 	syscall
 	
 	# read string input
@@ -36,9 +35,8 @@ main:
         syscall
 	
 	# prompt for age
- 	la	$t0, prompts + 18
+ 	la	$a0, prompts + 18
 	li	$v0, 4
-	move	$a0, $t0
 	syscall  
 	
 	# read age input
@@ -47,9 +45,8 @@ main:
         sw	$v0, inputs + 20
         
 	# prompt for address
-	la	$t0, prompts + 35
+	la	$a0, prompts + 35
 	li	$v0, 4
-	move	$a0, $t0
 	syscall  
 	
 	# read string input
@@ -69,9 +66,8 @@ main:
     	syscall  
         
         # print saved name input
-	la	$t0, inputs	
+	la	$a0, inputs	
 	li	$v0, 4
-	move	$a0, $t0
 	syscall
 	
         # print age outputLabel
@@ -80,9 +76,8 @@ main:
     	syscall  
     	
     	# print saved age input
-	lw	$t0, inputs + 20
+	lw	$a0, inputs + 20
 	li	$v0, 1
-	move	$a0, $t0
 	syscall
 	
 	# new line
@@ -96,9 +91,8 @@ main:
     	syscall  
     	
     	# print saved address
-	la	$t0, inputs + 40
+	la	$a0, inputs + 40
 	li	$v0, 4
-	move	$a0, $t0
 	syscall    	
 
 	# new line
