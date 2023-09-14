@@ -34,7 +34,7 @@ main:
 	li	$v0, 4
 	syscall
 	
-	# read string input
+	# read name input
 	li 	$v0, 8		
 	la 	$a0, inputs
         li	$a1, 20
@@ -55,7 +55,7 @@ main:
 	li	$v0, 4
 	syscall  
 	
-	# read string input
+	# read address input
 	li 	$v0, 8		
 	la 	$a0, inputs + 40
         li	$a1, 25
