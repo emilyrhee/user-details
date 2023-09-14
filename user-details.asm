@@ -72,6 +72,17 @@ main:
         li	$a1, 10
         syscall
 	
+	# prompt for state code
+	la	$a0, prompts + 74
+	li	$v0, 4
+	syscall
+	
+	# read state code input
+	li 	$v0, 8		
+	la 	$a0, inputs + 59
+        li	$a1, 10
+        syscall
+	
         # new line
 	li 	$v0, 11		
 	li 	$a0, 0xA
@@ -119,6 +130,16 @@ main:
     	
     	# print saved city
 	la	$a0, inputs + 49
+	li	$v0, 4
+	syscall	
+	
+	# print state code outputLabel
+	li 	$v0, 4          
+    	la 	$a0, outputLabel + 30
+    	syscall 
+    	
+    	# print saved state code
+    	la	$a0, inputs + 59
 	li	$v0, 4
 	syscall	
 
