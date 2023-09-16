@@ -1,12 +1,12 @@
 .data
 inputs: 
-	.space 20	# name
+	.space 52	# name
 	.word 0		# age
-	.space 25	# address
-	.space 10	# city
+	.space 100	# address
+	.space 50	# city
 	.space 4	# state code
-	.space 10	# zip
-	.space 16	# phone number
+	.space 7	# zip
+	.space 20	# phone number
 	
 prompts:
 	.asciiz "Enter your name: "
@@ -37,7 +37,7 @@ main:
 	# read name input
 	li 	$v0, 8		
 	la 	$a0, inputs
-        li	$a1, 20
+        li	$a1, 52
         syscall
 	
 	# prompt for age
@@ -48,7 +48,7 @@ main:
 	# read age input
 	li 	$v0, 5
         syscall
-        sw	$v0, inputs + 20
+        sw	$v0, inputs + 52
         
 	# prompt for address
 	la	$a0, prompts + 35
@@ -57,8 +57,8 @@ main:
 	
 	# read address input
 	li 	$v0, 8		
-	la 	$a0, inputs + 24
-        li	$a1, 25
+	la 	$a0, inputs + 56
+        li	$a1, 100
         syscall
         
         # prompt for city
@@ -68,8 +68,8 @@ main:
 	
 	# read city input
 	li 	$v0, 8		
-	la 	$a0, inputs + 49
-        li	$a1, 10
+	la 	$a0, inputs + 156
+        li	$a1, 50
         syscall
 	
 	# prompt for state code
@@ -79,7 +79,7 @@ main:
 	
 	# read state code input
 	li 	$v0, 8		
-	la 	$a0, inputs + 59
+	la 	$a0, inputs + 206
         li	$a1, 4
         syscall
         
@@ -90,8 +90,8 @@ main:
 	
 	# read zip code input
 	li 	$v0, 8		
-	la 	$a0, inputs + 63
-        li	$a1, 10
+	la 	$a0, inputs + 210
+        li	$a1, 7
         syscall
         
         # prompt for phone number
@@ -101,8 +101,8 @@ main:
 	
 	# read phone number input
 	li 	$v0, 8		
-	la 	$a0, inputs + 79
-        li	$a1, 10
+	la 	$a0, inputs + 217
+        li	$a1, 20
         syscall
 	
         # new line
@@ -126,7 +126,7 @@ main:
     	syscall  
     	
     	# print saved age input
-	lw	$a0, inputs + 20
+	lw	$a0, inputs + 52
 	li	$v0, 1
 	syscall
 	
@@ -141,7 +141,7 @@ main:
     	syscall  
     	
     	# print saved address
-	la	$a0, inputs + 24
+	la	$a0, inputs + 56
 	li	$v0, 4
 	syscall    	
 	
@@ -151,7 +151,7 @@ main:
     	syscall 
     	
     	# print saved city
-	la	$a0, inputs + 49
+	la	$a0, inputs + 156
 	li	$v0, 4
 	syscall	
 	
@@ -161,7 +161,7 @@ main:
     	syscall 
     	
     	# print saved state code
-    	la	$a0, inputs + 59
+    	la	$a0, inputs + 206
 	li	$v0, 4
 	syscall	
 	
@@ -171,7 +171,7 @@ main:
     	syscall 
     	
     	# print saved zip code
-    	la	$a0, inputs + 63
+    	la	$a0, inputs + 210
 	li	$v0, 4
 	syscall	
 	
@@ -180,8 +180,8 @@ main:
     	la 	$a0, outputLabel + 49
     	syscall 
     	
-    	# print saved zip code
-    	la	$a0, inputs + 79
+    	# print saved phone number
+    	la	$a0, inputs + 217
 	li	$v0, 4
 	syscall	
 	
