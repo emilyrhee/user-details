@@ -4,7 +4,7 @@ inputs:
 	.word 0		# age
 	.space 25	# address
 	.space 10	# city
-	.space 3	# state code
+	.space 4	# state code
 	.space 10	# zip
 	.space 16	# phone number
 	
@@ -80,6 +80,28 @@ main:
 	# read state code input
 	li 	$v0, 8		
 	la 	$a0, inputs + 59
+        li	$a1, 4
+        syscall
+        
+	# prompt for zip code
+	la	$a0, prompts + 98
+	li	$v0, 4
+	syscall 
+	
+	# read zip code input
+	li 	$v0, 8		
+	la 	$a0, inputs + 63
+        li	$a1, 10
+        syscall
+        
+        # prompt for phone number
+        la	$a0, prompts + 120
+	li	$v0, 4
+	syscall 
+	
+	# read phone number input
+	li 	$v0, 8		
+	la 	$a0, inputs + 79
         li	$a1, 10
         syscall
 	
@@ -142,11 +164,26 @@ main:
     	la	$a0, inputs + 59
 	li	$v0, 4
 	syscall	
-
-	# new line
-	li 	$v0, 11		
-	li 	$a0, 0xA
-	syscall
+	
+	# print zip code outputLabel
+	li 	$v0, 4          
+    	la 	$a0, outputLabel + 38
+    	syscall 
+    	
+    	# print saved zip code
+    	la	$a0, inputs + 63
+	li	$v0, 4
+	syscall	
+	
+	# print zip code outputLabel
+	li 	$v0, 4          
+    	la 	$a0, outputLabel + 49
+    	syscall 
+    	
+    	# print saved zip code
+    	la	$a0, inputs + 79
+	li	$v0, 4
+	syscall	
 	
 	# end program
 	li 	$v0, 10
